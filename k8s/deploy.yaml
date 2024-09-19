@@ -31,18 +31,19 @@ subjects:
   name: caldera-sa
   namespace: caldera-agent
 ---
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: caldera-agent
   namespace: caldera-agent
 spec:
+  selector:
+    matchLabels:
+      app: sandcat
   template:
     spec:
-      serviceAccountName: caldera-sa
       containers:
-      - name: sandcat
-        image:  nyrahul/k8s-sandcat:latest
-        command: ["./k8s_tlsscan"]
-      restartPolicy: Never
+      - image: nyrahul/sandcat:latest
+        imagePullPolicy: Always
+        name: sandcat
 ---
