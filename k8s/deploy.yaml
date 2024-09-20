@@ -10,22 +10,13 @@ metadata:
   namespace: caldera-agent
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: caldera-cr
-rules:
-- apiGroups: ["*"]
-  resources: ["*"]
-  verbs: ["*"]
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: caldera-crb
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: caldera-cr
+  name: cluster-admin
 subjects:
 - kind: ServiceAccount
   name: caldera-sa
@@ -39,11 +30,17 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: sandcat
+        app: sandcat
   template:
+    metadata:
+      labels:
+        app: sandcat
     spec:
       containers:
-      - image: nyrahul/sandcat:latest
+      - image: nyrahul/sandcat:v0.1.2
         imagePullPolicy: Always
         name: sandcat
+        env:
+          - name: SERVER
+            value: "http://vm.accuknox.com:8888"
 ---
