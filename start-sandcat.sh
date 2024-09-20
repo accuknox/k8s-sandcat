@@ -8,5 +8,4 @@ xxd -r -p $HEX > $BIN
 chmod +x $BIN
 echo "starting sandcat..."
 $BIN -server $SERVER -group red -v
-echo "sandcat executed, pausing for infinity..."
-sleep infinity
+echo "sandcat terminated..."
