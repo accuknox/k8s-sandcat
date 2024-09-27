@@ -14,7 +14,7 @@ RUN ARCH=$(uname -m) && \
 
 COPY sandcat.hex /
 COPY start-sandcat.sh /
-COPY res /
+COPY res/. /res/
 
 WORKDIR /
 
