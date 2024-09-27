@@ -1,4 +1,4 @@
-TAG=v0.1.3
+TAG=v1.0.0
 build:
 	docker buildx build -t nyrahul/sandcat:${TAG} .
 
