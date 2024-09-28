@@ -38,7 +38,7 @@ spec:
     spec:
       serviceAccountName: caldera-sa
       containers:
-      - image: nyrahul/sandcat:v1.0.2
+      - image: nyrahul/sandcat:v1.0.3
         imagePullPolicy: Always
         name: sandcat
         env:
