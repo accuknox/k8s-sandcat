@@ -38,10 +38,12 @@ spec:
     spec:
       serviceAccountName: caldera-sa
       containers:
-      - image: nyrahul/sandcat:v1.0.3
+      - image: nyrahul/sandcat:v1.0.4
         imagePullPolicy: Always
         name: sandcat
         env:
           - name: SERVER
             value: "http://vm.accuknox.com:8888"
+          - name: GROUP
+            value: "ACCUKNOX"
 ---
